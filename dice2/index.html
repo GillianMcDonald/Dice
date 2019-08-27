@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="main.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<h1 id="title"> Begin game when 'roll' is clicked</h1>
+    <div class="container" id="gameBox">
+        
+            <button id="startButton">New Game</button>
+            <img id="myimage" src="dice1.png" alt="">
+
+        <div id="boxWrap">
+            <div class="box">
+                <div class="content">
+                        
+                        <h2 id="playerNumber1">Player 1</h2>
+                        <p id="hold1">Hold</p>
+                       
+                        <p id="current1">Current</p>
+                        <p id="currentTotal1">0</p>
+                        
+                </div>
+            </div>
+            <div class="box">
+                    <div class="content">
+                            <h2 id="playerNumber2">Player 2</h2>
+                            <p id="hold2">Hold</p>
+                            <p id="current2">Current</p>
+                            <p id="currentTotal2">0</p>
+                    </div>
+            </div>
+        </div>
+        
+
+    </div>
+
+    <div class="moreButtons">
+        <div class="rollButton">
+        <button id="rollButton">Roll Dice</button>
+        </div>
+        <div class="holdButton">
+            <button id="holdButton">Hold</button>  
+        </div> 
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

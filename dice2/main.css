@@ -1,0 +1,68 @@
+body {
+    background-color: purple;
+}
+/* #startButton {
+    display:none;
+} */
+/* #showRoll {
+    display:none;
+} */
+
+/* this is the container for the game to sit in */
+
+* { box-sizing: border-box}
+
+.container {
+    width: 60vw;
+    height: 70vh;
+    position: relative; 
+    left: 18vw;
+    top: 10vh;
+    border-style: solid;
+}
+
+
+.box {
+    font-size: 3vh;
+    text-align: center;
+    width: 50%;
+}
+
+#boxWrap {
+    display: flex;
+    min-height: 100vh;
+    flex-wrap: wrap;
+}
+
+#gameBox {
+    font-size: 3vh;
+    padding-top: 5vh;
+    text-align: center;  
+}
+
+#startButton {
+    position: absolute;
+    font-size: 4vh;
+}
+
+.moreButtons {
+    display: flex;
+    flex-wrap: wrap;
+
+}
+#rollButton {
+    position: absolute;;
+    font-size: 4vh;
+    width: 20vw;
+    justify-content: center;
+}
+
+#holdButton {
+    position: absolute;;
+    font-size: 4vh;
+    
+}
+
+
+
+
