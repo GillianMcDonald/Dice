@@ -22,8 +22,8 @@ const hold1 = document.getElementById("hold1");
 const hold2 = document.getElementById("hold2");
 const current1 = document.getElementById("current1");
 const current2 = document.getElementById("current2");
-const currentTotal1 = document.getElementById("currentTotal1");
-const currentTotal2 = document.getElementById("currentTotal2");
+const currentTotal(num) = document.getElementsByClassName("currentTotal(num)");
+// const currentTotal2 = document.getElementById("currentTotal2");
 const playerNumber1 = document.getElementById("playerNumber1");
 const playerNumber2 = document.getElementById("playerNumber2");
 // do i need both playernumbers or can that be generic?
@@ -31,111 +31,97 @@ const playerNumber2 = document.getElementById("playerNumber2");
 
 
 // trying to do two players!
-total1 = 0;
-total2 = 0;
-// playerNumber1 = true; 
+let total = 0;
+let num = 2;
+let player = false; 
 
-startButton.addEventListener("click", () => {
-    rollButton.addEventListener("click", () => {
-    startButton.style.display = "none";
-    title.textContent = "Keep Rolling!";
-    let roll = Math.floor((Math.random() * 6) +1);
-    image.src = `dice${roll}.png`;
+function diceGame (num, player) => {
+    startButton.addEventListener("click", () => {
+        rollButton.addEventListener("click", () => {
+        startButton.style.display = "none";
+        title.textContent = "Keep Rolling!";
+        let roll = Math.floor((Math.random() * 6) +1);
+        image.src = `dice${roll}.png`;
+        currentTotal(num).textContent = roll + total;
+        total = roll + total;
+        });  
+        
+        if (roll == 1) {
+        playerNumber(num).textContent = "You Lose"; 
+        }
     
-
-        if (playerNumber1) {
-            currentTotal1.textContent = roll + total1;
-            total1 = roll + total1;
-            
-
-            if (roll == 1) {
-            playerNumber1.textContent = "You Lose"; 
-            }
-
-            if (currentTotal1 >= 20) {
-            playerNumber1.textContent = "You Won";
-            }
-
-            holdButton.addEventListener("click", () => {
-            hold1.textContent = total1;
-            currentTotal1.textContent = 0
-            // playerNumber1 = false
-            });
+        if (currentTotal(num) >= 20) {
+        playerNumber(num).textContent = "You Won";
         }
 
-        if (playerNumber2) {
-            currentTotal2.textContent = roll + total2;
-            total2 = roll + total2;
-            
+        holdButton.addEventListener("click", () => {
+        hold(num).textContent = total;
+        currentTotal(num).textContent = 0 
+                
+        }); 
 
-            if (roll == 1) {
-            playerNumber2.textContent = "You Lose"; 
-            }
-
-            if (currentTotal2 >= 20) {
-            playerNumber2.textContent = "You Won";
-            }
-
-            holdButton.addEventListener("click", () => {
-            hold2.textContent = total2;
-            currentTotal2.textContent = 0
-            // playerNumber1 = false
-            });
-        }
 
     });
 
-        
-        
 
 
+
+}
+
+
+
+//       
+
+//         
+// });
+        
+// rollButton.addEventListener("click", () => {
+//     let roll = Math.floor((Math.random() * 6) +1);
+//     image.src = `dice${roll}.png`;
+//     currentTotal2.textContent = roll + total2;
+//     total2 = roll + total2;
+//     if (roll == 1) {
+//         playerNumber2.textContent = "You Lose";  
+//         }
+        
+//         if (currentTotal2 >= 20) {
+//         playerNumber2.textContent = "You Won";
+//         }
+    
+//         holdButton.addEventListener("click", () => {
+//         hold2.textContent = total2;
+//         currentTotal2.textContent = 0
+//         });
+//     });   
     
 
-    // if (!playerNumber1) {
-    //     rollButton.addEventListener("click", () => {
-    //     startButton.style.display = "none";
-    //     title.textContent = "Keep Rolling!";
-    //     let roll = Math.floor((Math.random() * 6) +1);
-    //     image.src = `dice${roll}.png`;
-    //     currentTotal2.textContent = roll + player2total;
-    //     player2total = roll + player2total;
-    
-    //         if (roll == 1) {
-    //             playerNumber2.textContent = "You Lose"; 
-    //         }
 
-    //         if (player2total >= 20) {
-    //         playerNumber2.textContent = "You Won";
-    //         }
+// else if (!one) {
+//     rollButton.addEventListener("click", () => {
+//     startButton.style.display = "none";
+//     title.textContent = "Keep Rolling!";
+//     let roll = Math.floor((Math.random() * 6) +1);
+//     image.src = `dice${roll}.png`;
+//     currentTotal2.textContent = roll + total2;
+//     total2 = roll + total2;
+//     });
 
-    //         holdButton.addEventListener("click", () => {
-    //         hold2.textContent = player2total;
-    //         currentTotal2.textContent = 0
-    //         playerNumber2 = false
-    //             });
-
-    //     });
-    // }
-});
-
-
-
-
-
-
-//     if (playerNumber1.textContent == "You Lose" || playerNumber1.textContent == "You Won" || hold1.textContent >= "1") {
-//         playerNumber1 = false;
+//     if (roll == 1) {
+//     playerNumber2.textContent = "You Lose"; 
+//     one = true; 
 //     }
 
-//     else if (playerNumber2.textContent == "You Lose" || playerNumber2.textContent == "You Won" || hold2.textContent >= "1") {
-//         playerNumber2 = false;
+//      if (currentTotal2 >= 20) {
+//     playerNumber2.textContent = "You Won";
 //     }
 
-
-
-
-
-
+//     holdButton.addEventListener("click", () => {
+//     hold2.textContent = total2;
+//     currentTotal2.textContent = 0
+//      one = true; 
+//     });
+// }
+        
 // if (playerNumber1.textContent == "You Lose" || playerNumber1.textContent == "You Won") {
 //     rollButton.style.display = "none";
 //     startButton.style.display = "block";
@@ -149,7 +135,17 @@ startButton.addEventListener("click", () => {
 //         currentTotal1.textContent = 0
 //         });
 // }
-        
+
+    
+
+//     if (playerNumber1.textContent == "You Lose" || playerNumber1.textContent == "You Won" || hold1.textContent >= "1") {
+//         playerNumber1 = false;
+//     }
+
+//     else if (playerNumber2.textContent == "You Lose" || playerNumber2.textContent == "You Won" || hold2.textContent >= "1") {
+//         playerNumber2 = false;
+//     }
+
 
 
 
