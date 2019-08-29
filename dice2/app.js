@@ -18,55 +18,131 @@ const rollButton = document.getElementById("rollButton");
 const holdButton = document.getElementById("holdButton");
 const image = document.getElementById('myimage');
 const title = document.getElementById("title");
-const hold1 = document.getElementById("hold1");
-const hold2 = document.getElementById("hold2");
-const current1 = document.getElementById("current1");
-const current2 = document.getElementById("current2");
-const currentTotal(num) = document.getElementsByClassName("currentTotal(num)");
-// const currentTotal2 = document.getElementById("currentTotal2");
-const playerNumber1 = document.getElementById("playerNumber1");
-const playerNumber2 = document.getElementById("playerNumber2");
+const hold = document.getElementsByClassName("hold");
+const currentTotal = document.getElementsByClassName("currentTotal")
+const player1 = document.getElementById("player1");
+const player2 = document.getElementById("player2");
+const playerNumber = document.getElementsByClassName("playerNumber")
+// const currentPlayer = document.getElementsByClassName("currentPlayer");
 // do i need both playernumbers or can that be generic?
 // call the playerToggle with a click of the new game button 
 
 
 // trying to do two players!
 let total = 0;
-let num = 2;
-let player = false; 
+// // let num = 1;
+currentPlayer = player1; 
 
-function diceGame (num, player) => {
-    startButton.addEventListener("click", () => {
-        rollButton.addEventListener("click", () => {
-        startButton.style.display = "none";
-        title.textContent = "Keep Rolling!";
-        let roll = Math.floor((Math.random() * 6) +1);
-        image.src = `dice${roll}.png`;
-        currentTotal(num).textContent = roll + total;
-        total = roll + total;
-        });  
-        
-        if (roll == 1) {
-        playerNumber(num).textContent = "You Lose"; 
-        }
+startButton.addEventListener("click", () => {   
+image.src = "none";
+rollButton.style.display = "block";
+title.textContent = "Begin game when 'roll' is clicked";
+currentPlayer.playerNumber.textContent = "Current Player";
+total = 0;
+currentTotal1.textContent = 0;
+});
+    rollButton.addEventListener("click", () => {
+    startButton.style.display = "none";
+    title.textContent = "Keep Rolling!";
+    let roll = Math.floor((Math.random() * 6) +1);
+    image.src = `dice${roll}.png`;
+    currentTotal1.textContent = roll + total;
+    total = roll + total;
     
-        if (currentTotal(num) >= 20) {
-        playerNumber(num).textContent = "You Won";
+        if (roll == 1) {
+            playerNumber.textContent = "You Lose"; 
+        }
+
+         if (total >= 20) {
+            playerNumber1.textContent = "You Won";
         }
 
         holdButton.addEventListener("click", () => {
-        hold(num).textContent = total;
-        currentTotal(num).textContent = 0 
-                
-        }); 
+            hold1.textContent = total;
+            currentTotal1.textContent = 0
+            currentPlayer == player2
+        });
+
+        if (playerNumber1.textContent == "You Lose" || playerNumber1.textContent == "You Won" || playerNumber2.textContent == "You Lose" || playerNumber2.textContent == "You Won") {
+            rollButton.style.display = "none";
+            startButton.style.display = "block";
+            title.textContent = "Click New Game to play again";
+        }
+    });        
 
 
-    });
+    // trying to do two players! this works for player 1
+// let total = 0;
+
+// startButton.addEventListener("click", () => {   
+// image.src = "none";
+// rollButton.style.display = "block";
+// title.textContent = "Begin game when 'roll' is clicked";
+// playerNumber1.textContent = "Player 1";
+// total = 0;
+// currentTotal1.textContent = 0;
+// });
+//     rollButton.addEventListener("click", () => {
+//     startButton.style.display = "none";
+//     title.textContent = "Keep Rolling!";
+//     let roll = Math.floor((Math.random() * 6) +1);
+//     image.src = `dice${roll}.png`;
+//     currentTotal1.textContent = roll + total;
+//     total = roll + total;
+    
+//         if (roll == 1) {
+//             playerNumber1.textContent = "You Lose"; 
+//         }
+
+//          if (total >= 20) {
+//             playerNumber1.textContent = "You Won";
+//         }
+
+//         holdButton.addEventListener("click", () => {
+//         hold1.textContent = total;
+//         currentTotal1.textContent = 0
+//             });
+
+//         if (playerNumber1.textContent == "You Lose" || playerNumber1.textContent == "You Won") {
+//             rollButton.style.display = "none";
+//             startButton.style.display = "block";
+//             title.textContent = "Click New Game to play again";
+//         }
+//     });        
 
 
 
 
-}
+// // startButton.addEventListener("click", () => {
+//     rollButton.addEventListener("click", () => {
+//     startButton.style.display = "none";
+//     title.textContent = "Keep Rolling!";
+//     let roll = Math.floor((Math.random() * 6) +1);
+//     image.src = `dice${roll}.png`;
+//     currentTotal1.textContent = roll + total;
+//     total = roll + total;
+//     });
+    
+    // if (roll == 1) {
+    // playerNumber1.textContent = "You Lose"; 
+    // }
+
+    // if (total >= 20) {
+    // playerNumber1.textContent = "You Won";
+    // }
+
+    // holdButton.addEventListener("click", () => {
+    // hold1.textContent = total;
+    // playerNumber1.textContent = 0 
+    //         }); 
+    // }); 
+    
+
+
+// });
+
+
+// diceGame()
 
 
 
@@ -152,7 +228,7 @@ function diceGame (num, player) => {
 
 
 /*player 1 this is complete and works */
-// let player1total = 0;
+//let player1total = 0;
 
 // rollButton.addEventListener("click", () => {
 //     startButton.style.display = "none";
