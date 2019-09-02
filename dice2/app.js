@@ -19,10 +19,12 @@ const holdButton = document.getElementById("holdButton");
 const image = document.getElementById('myimage');
 const title = document.getElementById("title");
 const hold = document.getElementsByClassName("hold");
-const currentTotal = document.getElementsByClassName("currentTotal")
-const player1 = document.getElementById("player1");
-const player2 = document.getElementById("player2");
-const playerNumber = document.getElementsByClassName("playerNumber")
+const currentTotal1 = document.getElementById("currentTotal1")
+const currentTotal2 = document.getElementById("currentTotal2")
+// const player1 = document.getElementById("player1");
+// const player2 = document.getElementById("player2");
+const playerNumber1 = document.getElementById("playerNumber1")
+const playerNumber2 = document.getElementById("playerNumber2")
 // const currentPlayer = document.getElementsByClassName("currentPlayer");
 // do i need both playernumbers or can that be generic?
 // call the playerToggle with a click of the new game button 
@@ -30,44 +32,46 @@ const playerNumber = document.getElementsByClassName("playerNumber")
 
 // trying to do two players!
 let total = 0;
-// // let num = 1;
-currentPlayer = player1; 
 
-startButton.addEventListener("click", () => {   
+let num = 1;
+// let player1 = 1
+// let player2 = 2
+
+startButton.addEventListener("click", (num) => {   
 image.src = "none";
 rollButton.style.display = "block";
 title.textContent = "Begin game when 'roll' is clicked";
-currentPlayer.playerNumber.textContent = "Current Player";
 total = 0;
-currentTotal1.textContent = 0;
+currentTotal(num).textContent = 0;
 });
-    rollButton.addEventListener("click", () => {
+
+    rollButton.addEventListener("click", (num) => {
     startButton.style.display = "none";
     title.textContent = "Keep Rolling!";
     let roll = Math.floor((Math.random() * 6) +1);
     image.src = `dice${roll}.png`;
-    currentTotal1.textContent = roll + total;
+    currentTotal(num).textContent = roll + total;
     total = roll + total;
     
-        if (roll == 1) {
-            playerNumber.textContent = "You Lose"; 
-        }
+        // if (roll == 1) {
+        //     playerNumber.textContent = "You Lose"; 
+        // }
 
-         if (total >= 20) {
-            playerNumber1.textContent = "You Won";
-        }
+        //  if (total >= 20) {
+        //     playerNumber1.textContent = "You Won";
+        // }
 
-        holdButton.addEventListener("click", () => {
-            hold1.textContent = total;
-            currentTotal1.textContent = 0
-            currentPlayer == player2
-        });
+        // holdButton.addEventListener("click", () => {
+        //     hold1.textContent = total;
+        //     currentTotal1.textContent = 0
+        //     currentPlayer == player2
+        // });
 
-        if (playerNumber1.textContent == "You Lose" || playerNumber1.textContent == "You Won" || playerNumber2.textContent == "You Lose" || playerNumber2.textContent == "You Won") {
-            rollButton.style.display = "none";
-            startButton.style.display = "block";
-            title.textContent = "Click New Game to play again";
-        }
+        // if (playerNumber1.textContent == "You Lose" || playerNumber1.textContent == "You Won" || playerNumber2.textContent == "You Lose" || playerNumber2.textContent == "You Won") {
+        //     rollButton.style.display = "none";
+        //     startButton.style.display = "block";
+        //     title.textContent = "Click New Game to play again";
+        // }
     });        
 
 
@@ -348,18 +352,32 @@ first player to 20 wins
 // let playerOneScore = 0
 // let playerTwoScore = 0
 
-// function playerToggle() {
+function diceRoll() {
+    let randomDice = Math.ceil((Math.random() * 6));
+    if (playerOne) {
+        // add to player one score
+    }
+    else {
+        // add to player two score
+    }
 
-//     if (playerOne) {
-//         console.log("Player One's turn.")
-//         playerOneScore += 1
-//         playerOne = false;
-//         console.log(`P1 score is: ${playerOneScore}`)
-//     }
-//     else if (!playerOne) {
-//         console.log("Player Two's turn")
-//         playerOne = true;
-//         playerTwoScore += 1
-//         console.log(`P2 score is: ${playerOneScore}`)
-//     }
-// }
+}
+// so it can be done if you call the generic diceroll in each of the if and else in the player toggle.  
+function playerToggle() {
+
+    if (playerOne) {
+        console.log("Player One's turn.")
+        playerOneScore += 1
+        // diceRoll()
+        playerOne = false;
+        console.log(`P1 score is: ${playerOneScore}`)
+
+    }
+    else if (!playerOne) {
+        console.log("Player Two's turn")
+        playerOne = true;
+        playerTwoScore += 1
+        // diceRoll()
+        console.log(`P2 score is: ${playerOneScore}`)
+    }
+}
